@@ -10,7 +10,7 @@ class Account{
     public $password = '';
     public $role = 'staff';
     public $is_staff = true;
-    public $is_admin = false;
+    public $is_admin = true;
 
 
     protected $db;
@@ -81,7 +81,20 @@ class Account{
 
         return $data;
     }
+    
+    function fetchAll() {
+        $sql = "SELECT * FROM account;";
+        $query = $this->db->connect()->prepare($sql);
+
+        if ($query->execute()) {
+            return $query->fetchAll(PDO::FETCH_ASSOC); // Fetch all records as associative arrays
+        }
+
+        return []; // Return an empty array if no data found or query fails
+    }
+
 }
+
 
 // $obj = new Account();
 
