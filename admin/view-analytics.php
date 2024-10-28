@@ -1,3 +1,7 @@
+<?php
+    require_once('../admin/isajaxrequest.php');
+?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
