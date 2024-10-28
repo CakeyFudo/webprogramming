@@ -1,15 +1,18 @@
 <?php
-    session_start();
+session_start();
 
-    if(isset($_SESSION['account'])){
-        if(!$_SESSION['account']['is_staff']){
-            header('location: ../account/login.php');
-        }
-    }else{
-        header('location: ../account/login.php');
+// Check if user is logged in and has staff privileges
+if(isset($_SESSION['account'])){
+    if(!$_SESSION['account']['is_staff']){
+        header('Location: ../account/login.php');
+        exit();
     }
+} else {
+    header('Location: ../account/login.php');
+    exit();
+}
 
-    require_once '../includes/head.php';
+require_once '../includes/head.php';
 ?>
 <body id="dashboard">
     <div class="wrapper">

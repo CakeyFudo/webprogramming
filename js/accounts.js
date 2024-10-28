@@ -115,7 +115,7 @@ $(document).ready(function(){
     function viewAccounts(){
         $.ajax({
             type: 'GET',
-            url: '../products/view-accounts.php',
+            url: '../account/view-accounts.php',
             dataType: 'html',
             success: function(response){
                 $('.content-page').html(response)
