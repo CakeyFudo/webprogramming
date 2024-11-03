@@ -44,6 +44,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $imageFileType = strtolower(pathinfo($image, PATHINFO_EXTENSION));
     if(empty($image)){
+    $file_size = $_FILES['product_image']['size'];
+    if($file_size > 5 * 1024 * 1024){
+        $imageErr = 'Image should not exceed 5 MB';
+    }else if(empty($image)){
         $imageErr = 'Product image is required.';
     }else if(!in_array($imageFileType, $allowedType)){
         $imageErr = 'Accepted files are jpg, jpeg, and png only.';
